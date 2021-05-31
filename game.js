@@ -14,14 +14,15 @@ let level = 0;
 //     started = true;
 //   }
 // });
-document.addEventListener('keypress', function() {
+document.addEventListener("keypress", function () {
   if (!started) {
-    var leveltitle = document.getElementById("level-title").innerHTML = "Level " + level;
+    var leveltitle = (document.getElementById("level-title").innerHTML =
+      "Level " + level);
     nextSequence();
     started = true;
   }
 });
-document.addEventListener('click', function(i) {
+document.addEventListener("click", function (i) {
   var userChosenColour = i.target.id;
   userClickedPattern.push(userChosenColour);
 
@@ -42,7 +43,7 @@ document.addEventListener('click', function(i) {
 function checkAnswer(currentLevel) {
   if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
     if (userClickedPattern.length === gamePattern.length) {
-      setTimeout(function() {
+      setTimeout(function () {
         nextSequence();
       }, 1000);
     }
@@ -53,8 +54,9 @@ function checkAnswer(currentLevel) {
 
     var element = document.body;
     element.classList.add("game-over");
-    document.getElementById("level-title").innerHTML = "Game Over , Press Any Key to Restart";
-    setTimeout(function() {
+    document.getElementById("level-title").innerHTML =
+      "Game Over, Press Any Key to Restart";
+    setTimeout(function () {
       //   $("body").removeClass("game-over");
       // }, 200);
       var remove = document.getElementById("body");
@@ -68,7 +70,7 @@ function nextSequence() {
   userClickedPattern = [];
   level++;
   // $("#level-title").text("Level " + level);
-  document.getElementById("level-title").innerHTML = "level " + level;
+  document.getElementById("level-title").innerHTML = "Level " + level;
   let randomNumber = Math.floor(Math.random() * 4);
   let randomChosenColour = buttonColours[randomNumber];
   gamePattern.push(randomChosenColour);
@@ -95,7 +97,7 @@ function animatePress(currentColor) {
   let val = document.getElementById(currentColor);
   val.classList.add("pressed");
   // console.log(val);
-  setTimeout(function() {
+  setTimeout(function () {
     // $("#" + currentColor).removeClass("pressed");
     let rval = document.getElementById(currentColor);
     rval.classList.remove("pressed");
@@ -114,12 +116,11 @@ function startOver() {
 }
 
 function fadeIn(el) {
-  el.classList.add('show');
-  el.classList.remove('hide');
-
+  el.classList.add("show");
+  el.classList.remove("hide");
 }
 
 function fadeOut(el) {
-  el.classList.add('hide');
-  el.classList.remove('show');
+  el.classList.add("hide");
+  el.classList.remove("show");
 }
