@@ -16,14 +16,14 @@ let level = 0;
 // });
 document.addEventListener("keypress", function () {
   if (!started) {
-    var leveltitle = (document.getElementById("level-title").innerHTML =
+    let leveltitle = (document.getElementById("level-title").innerHTML =
       "Level " + level);
     nextSequence();
     started = true;
   }
 });
 document.addEventListener("click", function (i) {
-  var userChosenColour = i.target.id;
+  let userChosenColour = i.target.id;
   userClickedPattern.push(userChosenColour);
 
   playSound(userChosenColour);
@@ -48,18 +48,18 @@ function checkAnswer(currentLevel) {
       }, 1000);
     }
   } else {
-    // playSound("wrong");
-    // $("body").addClass("game-over");
-    // $("#level-title").text("Game Over, Press Any Key to Restart");
+    playSound("wrong");
+    $("body").addClass("game-over");
+    $("#level-title").text("Game Over, Press Any Key to Restart");
 
-    var element = document.body;
+    let element = document.body;
     element.classList.add("game-over");
     document.getElementById("level-title").innerHTML =
       "Game Over, Press Any Key to Restart";
     setTimeout(function () {
       //   $("body").removeClass("game-over");
       // }, 200);
-      var remove = document.getElementById("body");
+      let remove = document.getElementById("body");
       element.classList.remove("game-over");
     }, 200);
     startOver();
